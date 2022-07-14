@@ -1,4 +1,4 @@
-# SLF-pipeline
+# SLF_pipeline
 10/28/20
 jbagnall@broadinstitute.org
 
