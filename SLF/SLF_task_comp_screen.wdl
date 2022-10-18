@@ -29,6 +29,11 @@ task Calculate_SLF_Score
     {
         container: #docker we need to run
     }
+    
+    output
+    {
+    
+    }
     parameter_meta
     {
        countdatapath:
