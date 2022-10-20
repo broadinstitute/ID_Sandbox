@@ -27,8 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxml2-dev \
     libbz2-dev \
     libpng-dev \
-    r-bioc-biomart \
-    rysnc
+    r-bioc-biomart
 
 #Install R packages
 RUN R --no-echo --no-restore --no-save -e "install.packages('tidyr')"
