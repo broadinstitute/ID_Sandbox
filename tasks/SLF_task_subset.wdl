@@ -9,7 +9,7 @@ task SLF_subset
     {
         #Files & file inputs 
         String savefilepath #Path to output directory from comp screen pipeline
-        File compscreen_rds #Input file which is the .rds file from comp screen pipeline
+        String compscreen_rds #Input is file path to where the .rds file from comp screen pipeline is
         
         #Other Variables
         Array[String] keep_colnames
@@ -33,8 +33,8 @@ task SLF_subset
     parameter_meta
     {
         compscreen_rds: {
-            description: 'Input (.rds) file'
-            help: 'Input file which is the .rds file from comp screen pipeline'
+            description: 'File path to input (.rds) file'
+            help: 'Input which is the file path to where the .rds file from comp screen pipeline is'
                         }
         keep_colnames: {
             description: 'Column names to keep in output file'

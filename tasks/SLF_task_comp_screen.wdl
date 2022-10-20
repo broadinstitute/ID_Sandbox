@@ -34,6 +34,7 @@ task SLF_comp_screen
     output
     {
         File rawcounts_subset = savefilepath + ".rds"
+        String rawcounts_subset_path = savefilepath + ".rds"
     }
 
     parameter_meta
