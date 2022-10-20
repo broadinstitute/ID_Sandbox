@@ -8,6 +8,7 @@ RUN echo "options(repos = 'https://cloud.r-project.org')" > $(R --no-echo --no-s
 
 ENV R_LIBS_USER=/usr/local/lib/R
 ENV DEBIAN_FRONTEND=noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN=true
 
 #TODO:check to see if additional libraries are installed using ANTICONF
 RUN apt-get update && apt-get install -y --no-install-recommends \
