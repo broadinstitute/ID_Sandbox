@@ -1,5 +1,7 @@
 
-#Import the 2 workflows - github path
+#Importing the necessary workflows
+import "../tasks/SLF_task_comp_screen.wdl" as SLF_comp_sc
+import "../tasks/SLF_task_subset.wdl" as SLF_sub
 
 workflow SLF_wf 
 {
@@ -23,7 +25,7 @@ workflow SLF_wf
         Array[String] keep_colnames
         String docker_file
     }
-    call SLF_comp_screen as slf_cs{
+    call SLF_comp_sc.SLF_comp_screen as slf_cs{
         input:
             countdatapath = countdatapath
             savefilepath = savefilepath
@@ -34,7 +36,7 @@ workflow SLF_wf
             lowcountfilter_untreated = lowcountfilter_untreated
             docker = docker_file
     }
-    call SLF_subset as slf_sb{
+    call SLF_sub.SLF_subset as slf_sb{
         input:
             savefilepath = savefilepath
             compscreen_rds = slf_cs.rawcounts_subset_path #.rds file path from comp screen pipeline

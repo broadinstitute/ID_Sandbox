@@ -7,8 +7,8 @@
 
 suppressMessages(library(tidyr))
 suppressMessages(library(dplyr))
-#TODO: Change to github path
-suppressMessages(source('/idi/cgtb/jbagnall/pipelines/SLF_pipeline/Functions_CompoundScreenPipelineSLF_210927.R'))
+#Path in the docker image
+suppressMessages(source("/home/R/Functions_CompoundScreenPipelineSLF_210927.R")) 
 
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
