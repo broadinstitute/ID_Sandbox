@@ -34,8 +34,14 @@ RUN R --no-echo --no-restore --no-save -e "install.packages('tidyr')"
 RUN R --no-echo --no-restore --no-save -e "install.packages('stringr')"
 RUN R --no-echo --no-restore --no-save -e "install.packages('dplyr')"
 
-#TODO: COPY R scripts here -- use /usr/local/bin if calling R script using which in workflow task
+RUN /usr/local/lib/R
 
+#Copying R scripts -- use /usr/local/bin if calling R script using which in workflow task
+RUN mkdir -p /home/R/
+COPY src/Functions_CompoundScreenPipelineSLF_210927.R /home/R/
+
+COPY src/SLF_compscreen.R /usr/local/bin
+COPY src/SLF_subset.R /usr/local/bin
 
 
 
