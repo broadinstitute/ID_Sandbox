@@ -1,49 +1,64 @@
-task Calculate_SLF_Score
+task SLF_comp_screen
 {
     meta
     {
         author: 'Ojas Bardiya (bardiya@broadinstitute.org) at Broad Institute of MIT and Harvard'
-        description: 'Calculate SLF and ZZ score from Concensus data task'
+        description: 'Calculate SLF and ZZ score from Concensus data using the comp screen pipeline.'
     }
+    
     input
     {
-        #Files
-        File countdatapath #Since we're going to store this data in an external google bucket 
-        File savefilepath
+        #Files & file paths
+        File countdatapath #Input file
+        String savefilepath #Path to output for saving the .rds and .csv file 
         
         #Other Variables
         Boolean count_exact1
         String untreated_name
         String intcon_name 
-        Array[String] keep_colnames
         int lowcountfilter
         int lowcountfilter_untreated
+        String docker
     }
 
     command
     <<<
-        Rscript ~{which SLF_Pipeline.R} ~{countdatapath} ~{savefilepath} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated} ~{keep_colnames}
+        Rscript ~{which SLF_compscreen.R} ~{countdatapath} ~{savefilepath} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated} 
     >>>
     
     runtime
     {
-        container: #docker we need to run
+        container: #path to SLF_counts.dockerfile
     }
     
     output
     {
-    
+        File rawcounts_subset = savefilepath + ".rds"
     }
+
     parameter_meta
     {
-       countdatapath:
-       {
-       
-       }
-       savefilepath
-       {
-        
-       }
+        countdatapath:   {
+            description: 'Path to input',
+            help: 'Summary table (.csv) that was produced by Concensus2 pipeline'
+                        }
+        savefilepath:    {
+            description: 'Output path for both .rds and .csv files',
+            help : 'Path to output where you want to save your final SLF and ZZ-score file.'
+                        }
+        count_exact1:    {
+            description: 'Compute exact matches if T',
+            help: 'Boolean to determine whether to compute exact matches for counts'
+                        }     
+        untreated_name:  {
+            description: 'Name of negative control compound',
+            example: 'DMSO'
+                        }
+        intcon_name: {
+            description: 'Name of the internal spike-in controls',
+            help: 'Common word shared by all internal spike-in controls excluding hypomorphs',
+            example: 'PCR'
+                        }            
     }
 }
 

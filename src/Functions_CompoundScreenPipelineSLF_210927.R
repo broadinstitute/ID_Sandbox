@@ -396,7 +396,7 @@ compScreenPipeline <- function(rawcounts_df, untreatedname = "untreated", intcon
   }
   
   if(!is.na(savefilename)){
-    saveRDS(rawcounts_subset, file = savefilename)
+    saveRDS(rawcounts_subset, file = savefilename) #Saves df as rds file in specified path
     if(saveCSV){
       write.csv(rawcounts_subset, file = paste0(gsub(".rds", "", savefilename), ".csv"), row.names = F)
     }
