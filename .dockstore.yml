@@ -1,0 +1,11 @@
+version: 1.2
+workflows: 
+  - name: "SLF"
+    subclass: "WDL"
+    primaryDescriptorPath: /workflows/SLF_main_workflow.wdl
+    filters:
+      branches:
+        - main
+      tags:
+        - /.*/
+
