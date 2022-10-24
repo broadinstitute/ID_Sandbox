@@ -1,7 +1,10 @@
+version 1.0
+
 task SLF_subset
 {
     meta
     {
+        version: 'v0.1'
         author: 'Ojas Bardiya (bardiya@broadinstitute.org) at Broad Institute of MIT and Harvard'
         description: 'Output a subset of columns of a file containing SLF and ZZ counts from comp screen pipeline.'
     }
