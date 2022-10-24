@@ -25,7 +25,7 @@ workflow SLF_wf
         Int lowcountfilter
         Int lowcountfilter_untreated
         Array[String] keep_colnames
-        String docker_file
+        String? docker_file
     }
     call SLF_comp_sc.SLF_comp_screen as slf_cs{
         input:
@@ -36,14 +36,14 @@ workflow SLF_wf
             intcon_name = intcon_name,
             lowcountfilter = lowcountfilter,
             lowcountfilter_untreated = lowcountfilter_untreated,
-            docker = docker_file
+            docker_im = docker_file
     }
     call SLF_sub.SLF_subset as slf_sb{
         input:
             savefilepath = savefilepath,
             compscreen_rds = slf_cs.rawcounts_subset_path, #.rds file path from comp screen pipeline
             keep_colnames = keep_colnames,
-            docker = docker_file
+            docker_im = docker_file
     }
     output
     {
