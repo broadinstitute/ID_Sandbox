@@ -19,9 +19,8 @@ task SLF_subset
         String docker_im = "ojasbard/concensus_images:slf_v1"
     }
 
-    command
-    <<<
-        Rscript ~{which SLF_subset.R} ~{compscreen_rds} ~{keep_colnames} ~{savefilepath}
+    command <<<
+        set -e Rscript ~{which SLF_subset.R} ~{compscreen_rds} ~{keep_colnames} ~{savefilepath}
     >>>
     
     runtime

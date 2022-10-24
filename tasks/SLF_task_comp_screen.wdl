@@ -24,9 +24,8 @@ task SLF_comp_screen
         String docker_im = "ojasbard/concensus_images:slf_v1"
     }
 
-    command
-    <<<
-        Rscript ~{which SLF_compscreen.R} ~{countdatapath} ~{savefilepath} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated} 
+    command <<<
+        set -e Rscript ~{which SLF_compscreen.R} ~{countdatapath} ~{savefilepath} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated} 
     >>>
     
     runtime
