@@ -19,8 +19,8 @@ task SLF_comp_screen
         Boolean count_exact1
         String untreated_name
         String intcon_name 
-        int lowcountfilter
-        int lowcountfilter_untreated
+        Int lowcountfilter
+        Int lowcountfilter_untreated
         String docker_im = "ojasbard/concensus_images:slf_v1"
     }
 
