@@ -36,12 +36,12 @@ task SLF_subset
     parameter_meta
     {
         compscreen_rds: {
-            description: 'File path to input (.rds) file'
+            description: 'File path to input (.rds) file',
             help: 'Input which is the file path to where the .rds file from comp screen pipeline is'
                         }
         keep_colnames: {
-            description: 'Column names to keep in output file'
-            help: 'Column names kept in final .csv file outputted'
+            description: 'Column names to keep in output file',
+            help: 'Column names kept in final .csv file outputted',
             default: ['strain','compound','concentration','plate_name','row','column,count','rep,wellcount','wellcountfrac','std_lf,zscore_stdlf','zscore_stdlf2','correlation','log2FC']
                         }
     }
