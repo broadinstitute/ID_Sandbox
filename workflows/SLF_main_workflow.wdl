@@ -47,7 +47,7 @@ workflow SLF_wf
     }
     output
     {
-        File slf_counts_rds = SLF_comp_screen.rawcounts_subset
-        File slf_counts_subset_csv = SLF_subset.rawcounts_subset_csv
+        File slf_counts_rds = slf_cs.rawcounts_subset
+        File slf_counts_subset_csv = slf_sb.rawcounts_subset_csv
     }
 }
