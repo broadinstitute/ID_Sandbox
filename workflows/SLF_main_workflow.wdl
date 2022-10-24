@@ -29,20 +29,20 @@ workflow SLF_wf
     }
     call SLF_comp_sc.SLF_comp_screen as slf_cs{
         input:
-            countdatapath = countdatapath
-            savefilepath = savefilepath
-            count_exact1 = count_exact1
-            untreated_name = untreated_name
-            intcon_name = intcon_name 
-            lowcountfilter = lowcountfilter
-            lowcountfilter_untreated = lowcountfilter_untreated
+            countdatapath = countdatapath,
+            savefilepath = savefilepath,
+            count_exact1 = count_exact1,
+            untreated_name = untreated_name,
+            intcon_name = intcon_name,
+            lowcountfilter = lowcountfilter,
+            lowcountfilter_untreated = lowcountfilter_untreated,
             docker = docker_file
     }
     call SLF_sub.SLF_subset as slf_sb{
         input:
-            savefilepath = savefilepath
-            compscreen_rds = slf_cs.rawcounts_subset_path #.rds file path from comp screen pipeline
-            keep_colnames = keep_colnames
+            savefilepath = savefilepath,
+            compscreen_rds = slf_cs.rawcounts_subset_path, #.rds file path from comp screen pipeline
+            keep_colnames = keep_colnames,
             docker = docker_file
     }
     output
