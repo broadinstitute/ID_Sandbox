@@ -1,6 +1,6 @@
 version: 1.2
 workflows: 
-  - name: "SLF"
+  - name: "SLF_pipeline"
     subclass: "WDL"
     primaryDescriptorPath: /workflows/SLF_main_workflow.wdl
     filters:
