@@ -18,7 +18,7 @@ task SLF_comp_screen
         String intcon_name 
         int lowcountfilter
         int lowcountfilter_untreated
-        String docker
+        String docker_im = "ojasbard/concensus_images:slf_v1"
     }
 
     command
@@ -28,7 +28,8 @@ task SLF_comp_screen
     
     runtime
     {
-        container: #path to SLF_counts.dockerfile
+        container: docker_im
+        maxRetries: 0
     }
     
     output

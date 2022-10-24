@@ -13,7 +13,7 @@ task SLF_subset
         
         #Other Variables
         Array[String] keep_colnames
-        String docker
+        String docker_im = "ojasbard/concensus_images:slf_v1"
     }
 
     command
@@ -23,7 +23,8 @@ task SLF_subset
     
     runtime
     {
-        container: #TODO:path to SLF_counts.dockerfile -- pull it from dockerhub
+        container: docker_im
+        maxRetries: 0
     }
     
     output
