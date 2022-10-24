@@ -1,7 +1,10 @@
+version 1.0
+
 task SLF_comp_screen
 {
     meta
     {
+        version: 'v0.1'
         author: 'Ojas Bardiya (bardiya@broadinstitute.org) at Broad Institute of MIT and Harvard'
         description: 'Calculate SLF and ZZ score from Concensus data using the comp screen pipeline.'
     }

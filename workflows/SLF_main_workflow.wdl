@@ -1,3 +1,4 @@
+version 1.0
 
 #Importing the necessary workflows
 import "../tasks/SLF_task_comp_screen.wdl" as SLF_comp_sc
@@ -7,6 +8,7 @@ workflow SLF_wf
 {
     meta 
     {
+        version: 'v0.1'
         author: 'Ojas Bardiya (bardiya@broadinstitute.org) at Broad Institute of MIT and Harvard'
         description: 'Calculate SLF and ZZ scores from Concensus data and save a csv file containing a subset of columns selected.'
     }
