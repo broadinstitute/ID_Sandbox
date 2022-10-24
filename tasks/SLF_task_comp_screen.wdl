@@ -25,7 +25,7 @@ task SLF_comp_screen
     }
 
     command <<<
-        set -e Rscript ~{which SLF_compscreen.R} ~{countdatapath} ~{savefilepath} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated} 
+        set -e Rscript ${which SLF_compscreen.R} ~{countdatapath} ~{savefilepath} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated} 
     >>>
     
     runtime
