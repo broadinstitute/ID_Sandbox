@@ -22,6 +22,7 @@ task SLF_comp_screen
         Int lowcountfilter
         Int lowcountfilter_untreated
         String docker_im = "ojasbard/concensus_images:slf_v1"
+        Int? mem_gb = 32
     }
 
     command <<<
@@ -30,7 +31,9 @@ task SLF_comp_screen
     
     runtime
     {
+        cpu: 4
         container: docker_im
+        memory: mem_gb + 'G'
         maxRetries: 0
     }
     

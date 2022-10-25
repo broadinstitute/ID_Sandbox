@@ -17,6 +17,7 @@ task SLF_subset
         #Other Variables
         Array[String] keep_colnames
         String docker_im = "ojasbard/concensus_images:slf_v1"
+        Int? mem_gb = 32
     }
 
     command <<<
@@ -25,7 +26,9 @@ task SLF_subset
     
     runtime
     {
+        cpu: 4
         container: docker_im
+        memory: mem_gb + 'G'
         maxRetries: 0
     }
     
