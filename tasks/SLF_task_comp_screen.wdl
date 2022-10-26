@@ -32,7 +32,7 @@ task SLF_comp_screen
     runtime
     {
         cpu: 4
-        container: docker_im
+        docker: docker_im
         memory: mem_gb + 'G'
         maxRetries: 0
     }
