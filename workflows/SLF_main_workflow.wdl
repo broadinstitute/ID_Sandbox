@@ -24,7 +24,7 @@ workflow SLF_wf
         String intcon_name 
         Int lowcountfilter
         Int lowcountfilter_untreated
-        Array[String] keep_colnames
+        Array[String]? keep_colnames
         String? docker_file
     }
     call SLF_comp_sc.SLF_comp_screen as slf_cs{

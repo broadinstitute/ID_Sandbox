@@ -15,7 +15,7 @@ task SLF_subset
         String compscreen_rds #Input is file path to where the .rds file from comp screen pipeline is
         
         #Other Variables
-        Array[String] keep_colnames
+        Array[String] keep_colnames = ['strain','compound','concentration','plate_name','row','column,count','rep,wellcount','wellcountfrac','std_lf,zscore_stdlf','zscore_stdlf2','correlation','log2FC']
         String docker_im = "ojasbard/concensus_images:slf_v1"
         Int? mem_gb = 32
     }
