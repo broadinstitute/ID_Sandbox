@@ -21,7 +21,7 @@ task SLF_comp_screen
         String intcon_name 
         Int lowcountfilter
         Int lowcountfilter_untreated
-        String docker_im = "ojasbard/concensus_images:slf_v1"
+        String? docker_im = "ojasbard/concensus_images:slf_v1"
         Int? mem_gb = 32
     }
 
