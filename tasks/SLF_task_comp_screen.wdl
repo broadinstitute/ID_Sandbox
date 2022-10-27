@@ -13,8 +13,8 @@ task SLF_comp_screen
     {
         #Files & file paths
         File countdatapath #Input file
-        String savefilename = "mabs_output" #File name for saving the output
-        String savefilepath = "${savefilename}.rds"
+        String saverdsfilename = "mabs_output" #File name for saving the output
+        String savefilepath = "${saverdsfilename}.rds"
 
         #Other Variables
         Boolean count_exact1
