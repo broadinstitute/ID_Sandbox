@@ -6,14 +6,14 @@ task SLF_comp_screen
     {
         version: 'v0.1'
         author: 'Ojas Bardiya (bardiya@broadinstitute.org) at Broad Institute of MIT and Harvard'
-        description: 'Calculate SLF and ZZ score from Concensus data using the comp screen pipeline.'
+        description: 'Calculate SLF and ZZ score from Concensus data using the comp screen pipeline'
     }
     
     input
     {
         #Files & file paths
         File countdatapath #Input file
-        String saverdsfilename = "mabs_output" #File name for saving the output
+        String saverdsfilename #File name for saving the output
         String savefilepath = "${saverdsfilename}.rds"
 
         #Other Variables

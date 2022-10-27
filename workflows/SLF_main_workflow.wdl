@@ -17,8 +17,8 @@ workflow SLF_wf
         #Files & file paths
         File countdatapath #Input file
         String? savefilepath #Path to output for saving the .rds and .csv file 
-        String? savecsvfilename
-        String? saverdsfilename
+        String savecsvfilename
+        String saverdsfilename
 
         #Other Variables
         Boolean count_exact1
