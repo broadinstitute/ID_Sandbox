@@ -16,8 +16,10 @@ workflow SLF_wf
     {
         #Files & file paths
         File countdatapath #Input file
-        String savefilepath #Path to output for saving the .rds and .csv file 
-        
+        String? savefilepath #Path to output for saving the .rds and .csv file 
+        String? savecsvfilename
+        String? saverdsfilename
+
         #Other Variables
         Boolean count_exact1
         String untreated_name
@@ -30,18 +32,20 @@ workflow SLF_wf
     call SLF_comp_sc.SLF_comp_screen as slf_cs{
         input:
             countdatapath = countdatapath,
-            savefilepath = savefilepath,
+            saverdsfilename = saverdsfilename,
             count_exact1 = count_exact1,
             untreated_name = untreated_name,
             intcon_name = intcon_name,
             lowcountfilter = lowcountfilter,
             lowcountfilter_untreated = lowcountfilter_untreated,
+            savefilepath = savefilepath,
             docker_im = docker
     }
     call SLF_sub.SLF_subset as slf_sb{
         input:
             savefilepath = savefilepath,
-            compscreen_rds = slf_cs.rawcounts_subset, #.rds file path from comp screen pipeline
+            savecsvfilename = savecsvfilename,
+            compscreen_rds = slf_cs.rawcounts_subset, #.rds file from comp screen pipeline
             keep_colnames = keep_colnames,
             docker_im = docker
     }

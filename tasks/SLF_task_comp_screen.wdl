@@ -13,8 +13,9 @@ task SLF_comp_screen
     {
         #Files & file paths
         File countdatapath #Input file
-        String savefilepath #Path to output for saving the .rds and .csv file 
-        
+        String savefilename = "mabs_output" #File name for saving the output
+        String savefilepath = "${savefilename}.rds"
+
         #Other Variables
         Boolean count_exact1
         String untreated_name
@@ -39,7 +40,7 @@ task SLF_comp_screen
     
     output
     {
-        File rawcounts_subset = savefilepath + ".rds"
+        File rawcounts_subset = savefilepath
     }
 
     parameter_meta

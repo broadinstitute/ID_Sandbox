@@ -12,13 +12,13 @@ suppressMessages(source("/home/R/Functions_CompoundScreenPipelineSLF_210927.R"))
 
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
-  savefilepath_rds <- args[1]
+  file_rds <- args[1]
   keep_colnames = unlist(strsplit(args[2], split = ','))
   savefilepath <- args[3]
 
   #Save CSV file with chosen columns
-  savefilepath_csv = paste0(gsub("\\..*","",savefilepath),".csv")
-  subsetSLF(screendata_path = savefilepath_rds, keep_columns = keep_colnames, savefilename = savefilepath_csv)
+  #savefilepath_csv = paste0(gsub("\\..*","",savefilepath),".csv")
+  subsetSLF(screendata_path = file_rds, keep_columns = keep_colnames, savefilename = savefilepath)
 } 
 
 main()

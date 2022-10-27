@@ -11,8 +11,10 @@ task SLF_subset
     input
     {
         #Files & file inputs 
-        String savefilepath #Path to output directory from comp screen pipeline
-        String compscreen_rds #Input is file path to where the .rds file from comp screen pipeline is
+        String savecsvfilename = "mabs_output_subset" #Path to output directory from comp screen pipeline
+        String savefilepath = "${savecsvfilename}.csv"
+        File compscreen_rds #Input is the .rds file from comp screen pipeline
+
         
         #Other Variables
         Array[String] keep_colnames = ['strain','compound','concentration','plate_name','row','column,count','rep,wellcount','wellcountfrac','std_lf,zscore_stdlf','zscore_stdlf2','correlation','log2FC']
@@ -34,13 +36,13 @@ task SLF_subset
     
     output
     {
-        File rawcounts_subset_csv = savefilepath + ".csv"
+        File rawcounts_subset_csv = savefilepath
     }
     parameter_meta
     {
         compscreen_rds: {
-            description: 'File path to input (.rds) file',
-            help: 'Input which is the file path to where the .rds file from comp screen pipeline is'
+            description: 'Input (.rds) file',
+            help: 'Input .rds file from comp screen pipeline'
                         }
         keep_colnames: {
             description: 'Column names to keep in output file',
