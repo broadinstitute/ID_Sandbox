@@ -31,16 +31,15 @@ task SLF_comp_screen
     
     runtime
     {
-        cpu: 4
-        docker: docker_im
-        memory: mem_gb + 'G'
-        maxRetries: 0
+        cpu : 4
+        docker : docker_im
+        memory : mem_gb + 'G'
+        maxRetries : 0
     }
     
     output
     {
         File rawcounts_subset = savefilepath + ".rds"
-        String rawcounts_subset_path = savefilepath + ".rds"
     }
 
     parameter_meta

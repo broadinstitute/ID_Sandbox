@@ -41,7 +41,7 @@ workflow SLF_wf
     call SLF_sub.SLF_subset as slf_sb{
         input:
             savefilepath = savefilepath,
-            compscreen_rds = slf_cs.rawcounts_subset_path, #.rds file path from comp screen pipeline
+            compscreen_rds = slf_cs.rawcounts_subset, #.rds file path from comp screen pipeline
             keep_colnames = keep_colnames,
             docker_im = docker
     }
