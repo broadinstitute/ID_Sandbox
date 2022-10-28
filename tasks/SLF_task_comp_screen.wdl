@@ -40,7 +40,7 @@ task SLF_comp_screen
     
     output
     {
-        File rawcounts_subset = savefilepath
+        File rawcounts_subset = ${savefilepath}
     }
 
     parameter_meta
