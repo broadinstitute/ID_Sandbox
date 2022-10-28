@@ -34,7 +34,7 @@ RUN R --no-echo --no-restore --no-save -e "install.packages('tidyr')"
 RUN R --no-echo --no-restore --no-save -e "install.packages('stringr')"
 RUN R --no-echo --no-restore --no-save -e "install.packages('dplyr')"
 
-#RUN /usr/local/lib/R
+RUN /usr/local/lib/R
 
 #Copying R scripts -- use /usr/local/bin if calling R script using which in workflow task
 RUN mkdir -p /home/R/
