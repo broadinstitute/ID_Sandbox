@@ -40,8 +40,8 @@ RUN R --no-echo --no-restore --no-save -e "install.packages('dplyr')"
 RUN mkdir -p /home/R/
 COPY src/Functions_CompoundScreenPipelineSLF_210927.R /home/R/
 
-COPY src/SLF_compscreen.R /usr/local/bin
-COPY src/SLF_subset.R /usr/local/bin
+COPY src/SLF_compscreen.R /usr/local/bin/
+COPY src/SLF_subset.R /usr/local/bin/
 
 
 
