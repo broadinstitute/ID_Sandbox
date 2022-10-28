@@ -11,8 +11,8 @@ task SLF_subset
     input
     {
         #Files & file inputs 
-        String savecsvfilename = "mabs_output_subset" #Path to output directory from comp screen pipeline
-        String savefilepath = "${savecsvfilename}.csv"
+        String prefix 
+        String savefilepath = "${prefix}.csv"
         File compscreen_rds #Input is the .rds file from comp screen pipeline
 
         
