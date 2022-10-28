@@ -22,7 +22,7 @@ task SLF_comp_screen
         String intcon_name 
         Int lowcountfilter
         Int lowcountfilter_untreated
-        String docker_im = "ojasbard/concensus_images:slf_v1"
+        String docker_image = "ojasbard/concensus_projects:slf_v2"
         Int? mem_gb = 32
     }
 
@@ -33,7 +33,7 @@ task SLF_comp_screen
     runtime
     {
         cpu : 4
-        docker : docker_im
+        docker : docker_image
         memory : mem_gb + 'G'
         maxRetries : 0
     }

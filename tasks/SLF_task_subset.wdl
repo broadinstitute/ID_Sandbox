@@ -18,7 +18,7 @@ task SLF_subset
         
         #Other Variables
         Array[String] keep_colnames = ['strain','compound','concentration','plate_name','row','column,count','rep,wellcount','wellcountfrac','std_lf,zscore_stdlf','zscore_stdlf2','correlation','log2FC']
-        String docker_im = "ojasbard/concensus_images:slf_v1"
+        String docker_image = "ojasbard/concensus_projects:slf_v2"
         Int? mem_gb = 32
     }
 
@@ -29,7 +29,7 @@ task SLF_subset
     runtime
     {
         cpu : 4
-        docker : docker_im
+        docker : docker_image
         memory : mem_gb + 'G'
         maxRetries : 0
     }

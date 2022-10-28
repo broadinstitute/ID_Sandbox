@@ -38,7 +38,7 @@ workflow SLF_wf
             lowcountfilter = lowcountfilter,
             lowcountfilter_untreated = lowcountfilter_untreated,
             savefilepath = savefilepath,
-            docker_im = docker
+            docker_image = docker
     }
     call SLF_sub.SLF_subset as slf_sb{
         input:
@@ -46,7 +46,7 @@ workflow SLF_wf
             prefix = prefix,
             compscreen_rds = slf_cs.rawcounts_subset, #.rds file from comp screen pipeline
             keep_colnames = keep_colnames,
-            docker_im = docker
+            docker_image = docker
     }
     output
     {
