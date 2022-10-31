@@ -50,7 +50,7 @@ task SLF_comp_screen
             description: 'Path to input',
             help: 'Summary table (.csv) that was produced by Concensus2 pipeline'
                         }
-        savefilepath:    {
+        savefilepath1:    {
             description: 'Output path for both .rds and .csv files',
             help : 'Path to output where you want to save your final SLF and ZZ-score file.'
                         }
