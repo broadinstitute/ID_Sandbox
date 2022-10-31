@@ -26,9 +26,9 @@ task SLF_comp_screen
         Int? mem_gb = 32
     }
 
-    command <<<
-        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{savefilepath} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated} 
-    >>>
+    command {
+        Rscript $(which SLF_compscreen.R) ${countdatapath} ${savefilepath} ${count_exact1} ${untreated_name} ${intcon_name} ${lowcountfilter} ${lowcountfilter_untreated} 
+    }
     
     runtime
     {
@@ -40,7 +40,7 @@ task SLF_comp_screen
     
     output
     {
-        Array[File]+ rawcounts_subset = glob('*.rds')
+        File rawcounts_subset = savefilepath
     }
 
     parameter_meta

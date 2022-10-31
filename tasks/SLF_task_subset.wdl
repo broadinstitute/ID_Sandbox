@@ -18,13 +18,13 @@ task SLF_subset
         
         #Other Variables
         Array[String] keep_colnames = ['strain','compound','concentration','plate_name','row','column,count','rep,wellcount','wellcountfrac','std_lf,zscore_stdlf','zscore_stdlf2','correlation','log2FC']
-        String docker_image = "ojasbard/concensus_images:slf_v1"
+        String docker_image = "ojasbard/concensus_images:slf_v"
         Int? mem_gb = 32
     }
 
-    command <<<
-        set -e Rscript $(which SLF_subset.R) ~{compscreen_rds} ~{keep_colnames} ~{savefilepath}
-    >>>
+    command {
+        Rscript $(which SLF_subset.R) ${compscreen_rds} ${keep_colnames} ${savefilepath}
+    }
     
     runtime
     {
@@ -36,7 +36,7 @@ task SLF_subset
     
     output
     {
-       Array[File]+ rawcounts_subset_csv = glob('*.csv')
+        File rawcounts_subset_csv = savefilepath
     }
     parameter_meta
     {
