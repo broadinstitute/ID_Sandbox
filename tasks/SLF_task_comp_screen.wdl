@@ -40,7 +40,7 @@ task SLF_comp_screen
     
     output
     {
-        File rawcounts_subset = glob('*.rds')
+        Array[File]+ rawcounts_subset = glob('*.rds')
     }
 
     parameter_meta
