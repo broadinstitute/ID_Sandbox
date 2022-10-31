@@ -16,7 +16,8 @@ workflow SLF_wf
     {
         #Files & file paths
         File countdatapath #Input file
-        String? savefilepath #Path to output for saving the .rds and .csv file 
+        String? savefilepath1 #Path to output for saving the .rds file 
+        String? savefilepath2 #Path to output for saving the .csv file 
         String prefix
 
         #Other Variables
@@ -37,12 +38,12 @@ workflow SLF_wf
             intcon_name = intcon_name,
             lowcountfilter = lowcountfilter,
             lowcountfilter_untreated = lowcountfilter_untreated,
-            savefilepath = savefilepath,
+            savefilepath1 = savefilepath1,
             docker_image = docker
     }
     call SLF_sub.SLF_subset as slf_sb{
         input:
-            savefilepath = savefilepath,
+            savefilepath2 = savefilepath2,
             prefix = prefix,
             compscreen_rds = slf_cs.rawcounts_subset, #.rds file from comp screen pipeline
             keep_colnames = keep_colnames,

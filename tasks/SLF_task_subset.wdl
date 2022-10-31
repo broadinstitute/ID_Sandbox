@@ -12,19 +12,19 @@ task SLF_subset
     {
         #Files & file inputs 
         String prefix 
-        String savefilepath = "${prefix}.csv"
+        String savefilepath2 = "${prefix}.csv"
         File compscreen_rds #Input is the .rds file from comp screen pipeline
 
         
         #Other Variables
         Array[String] keep_colnames = ['strain','compound','concentration','plate_name','row','column,count','rep,wellcount','wellcountfrac','std_lf,zscore_stdlf','zscore_stdlf2','correlation','log2FC']
-        String docker_image = "ojasbard/concensus_images:slf_v"
+        String docker_image = "ojasbard/concensus_images:slf_v2"
         Int? mem_gb = 32
     }
 
-    command {
-        Rscript $(which SLF_subset.R) ${compscreen_rds} ${keep_colnames} ${savefilepath}
-    }
+    command <<<
+        set -e Rscript $(which SLF_subset.R) ~{compscreen_rds} ~{keep_colnames} ~{savefilepath2}
+    >>>
     
     runtime
     {
@@ -36,7 +36,7 @@ task SLF_subset
     
     output
     {
-        File rawcounts_subset_csv = savefilepath
+        File rawcounts_subset_csv = savefilepath2
     }
     parameter_meta
     {
