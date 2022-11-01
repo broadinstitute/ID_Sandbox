@@ -1,6 +1,6 @@
 version: 1.2
 workflows: 
-  - name: "SLF-pipeline"
+  - name: "SLF-main-pipeline"
     subclass: "WDL"
     primaryDescriptorPath: /workflows/SLF_main_workflow.wdl
     filters:
@@ -8,4 +8,15 @@ workflows:
         - main
       tags:
         - /.*/
+        
+  - name: "slf-compscreen"
+    subclass: "WDL"
+    primaryDescriptorPath: /workflows/slf_compscreen_wf.wdl
+    filters:
+      branches:
+        - main
+      tags:
+        - /.*/
+
+
 
