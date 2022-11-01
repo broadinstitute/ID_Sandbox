@@ -36,7 +36,7 @@ task SLF_subset
     
     output
     {
-        File rawcounts_subset_csv = savefilepath2
+        File rawcounts_subset_csv = "${prefix}.csv"
     }
     parameter_meta
     {

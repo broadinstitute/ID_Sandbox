@@ -50,10 +50,10 @@ task SLF_comp_screen
             description: 'Path to input',
             help: 'Summary table (.csv) that was produced by Concensus2 pipeline'
                         }
-        savefilepath1:    {
-            description: 'Output path for both .rds and .csv files',
-            help : 'Path to output where you want to save your final SLF and ZZ-score file.'
-                        }
+        #savefilepath1:    {
+            #description: 'Output path for both .rds and .csv files',
+            #help : 'Path to output where you want to save your final SLF and ZZ-score file.'
+                        #}
         count_exact1:    {
             description: 'Compute exact matches if T',
             help: 'Boolean to determine whether to compute exact matches for counts'
