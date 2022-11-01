@@ -32,8 +32,7 @@ task SLF_comp_screen
         set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated}
         #mv ~{"${prefix}.rds"} .
         echo "Checking if file ${prefix}.rds is generated"
-        ls /home/R/
-        ls /usr/local/bin/
+        find . -name "${prefix}.rds"
     >>>
     
     runtime
