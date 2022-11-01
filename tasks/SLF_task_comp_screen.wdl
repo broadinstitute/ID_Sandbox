@@ -23,8 +23,8 @@ task SLF_comp_screen
         Int lowcountfilter
         Int lowcountfilter_untreated
         String docker_image = "ojasbard/concensus_images:slf_v1"
-        Int? mem_gb = 64
-        Int? disk_gb = 100
+        Int mem_gb = 32
+        Int disk_gb = 50
     }
 
     command <<<
@@ -39,7 +39,7 @@ task SLF_comp_screen
     {
         cpu : 4
         docker : docker_image
-        memory : mem_gb+'G'
+        memory : '${mem_gb} GB'
         disks : 'local-disk ${disk_gb} LOCAL'
         maxRetries : 0
     }
