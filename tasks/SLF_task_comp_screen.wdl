@@ -28,7 +28,8 @@ task SLF_comp_screen
     }
 
     command <<<
-        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"/home/R/${prefix}.rds"} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated}
+        #cd /home/R/${prefix}.rds
+        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated}
         #mv ~{"${prefix}.rds"} .
         echo "Checking if file ${prefix}.rds is generated"
         ls /home/R/
@@ -46,7 +47,7 @@ task SLF_comp_screen
     
     output
     {
-        File rawcounts_subset = "/home/R/${prefix}.rds"
+        File rawcounts_subset = "${prefix}.rds"
     }
 
     parameter_meta
