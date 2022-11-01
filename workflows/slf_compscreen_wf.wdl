@@ -9,7 +9,7 @@ workflow slf_compscreen_wf
     {
         version: 'v0.1'
         author: 'Ojas Bardiya (bardiya@broadinstitute.org) at Broad Institute of MIT and Harvard'
-        description: 'Calculate SLF and ZZ scores from Concensus data and save a csv file containing a subset of columns selected.'
+        description: 'Calculate SLF and ZZ scores from Concensus data and save a rds file.'
     }
     input 
     {
