@@ -30,10 +30,10 @@ task SLF_comp_screen
     command <<<
         #cd /home/R/${prefix}.rds
         echo "Starting R script"
-        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated}
+        Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated}
         #mv ~{"${prefix}.rds"} .
         echo "Checking if file ${prefix}.rds is generated"
-        ls
+        ls /usr/local/
     >>>
     
     runtime
@@ -42,7 +42,7 @@ task SLF_comp_screen
         docker : docker_image
         memory : '${mem_gb} GB'
         disks : 'local-disk ${disk_gb} LOCAL'
-        maxRetries : 2
+        maxRetries : 3
     }
     
     output
