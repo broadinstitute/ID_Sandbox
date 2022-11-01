@@ -13,7 +13,7 @@ suppressMessages(source("/home/R/Functions_CompoundScreenPipelineSLF_210927.R"))
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   file_rds <- args[1]
-  keep_colnames = unlist(strsplit(args[2], split = ','))
+  keep_colnames = unlist(args[2])
   savefilepath <- args[3]
 
   #Save CSV file with chosen columns
