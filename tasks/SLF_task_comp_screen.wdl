@@ -14,7 +14,7 @@ task SLF_comp_screen
         #Files & file paths
         File countdatapath #Input file
         String prefix 
-        String savefilepath1 = "${prefix}.rds" #File name for saving the output
+        #String savefilepath1 = "${prefix}.rds" #File name for saving the output
 
         #Other Variables
         Boolean count_exact1
@@ -27,8 +27,8 @@ task SLF_comp_screen
     }
 
     command <<<
-        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{savefilepath1} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated}
-        #mv ${savefilepath1} .
+        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated}
+        #mv ~{"${prefix}.rds"} .
     >>>
     
     runtime
@@ -41,7 +41,7 @@ task SLF_comp_screen
     
     output
     {
-        File rawcounts_subset = savefilepath1
+        File rawcounts_subset = "${prefix}.rds"
     }
 
     parameter_meta
