@@ -46,6 +46,7 @@ task SLF_comp_screen
     
     output
     {
+        #File rawcounts_changed_columns = 
         File rawcounts_subset = "${prefix}.rds"
     }
 
