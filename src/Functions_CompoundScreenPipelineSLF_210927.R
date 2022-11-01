@@ -42,6 +42,7 @@ cleanfromConcensus2 <- function(rawcountpath, count_exact = T){
   colnames(rawcounts)[colnames(rawcounts) == "mmoles_per_liter"] = "concentration"
   colnames(rawcounts)[colnames(rawcounts) == "plate_barcode"] = "plate_name"
   colnames(rawcounts)[colnames(rawcounts) == "strain_gene"] = "strain"
+  print("Ran function.")
   return(rawcounts)
 }
 

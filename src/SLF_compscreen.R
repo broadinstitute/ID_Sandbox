@@ -12,6 +12,7 @@ suppressMessages(source("/home/R/Functions_CompoundScreenPipelineSLF_210927.R"))
 
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
+  print(args)
   countdatapath1 <- args[1]
   savefilepath <- args[2]
   count_exact1 <- args[3]
