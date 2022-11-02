@@ -14,7 +14,7 @@ cleanfromConcensus2 <- function(rawcountpath, count_exact = T){
   #Adjusts column names
   #outputs data frame to be read by compScreenPipeline for calculation of ZZ and SLF
   rawcounts = read.csv(rawcountpath, stringsAsFactors = F)
-  
+  print(dim(rawcounts))
   if(is.na(count_exact) | count_exact %in% c("f", "F", "false", "FALSE")){
     count_exact = F
   }else if(count_exact %in% c("t", "true", "TRUE", "T")){
@@ -42,7 +42,7 @@ cleanfromConcensus2 <- function(rawcountpath, count_exact = T){
   colnames(rawcounts)[colnames(rawcounts) == "mmoles_per_liter"] = "concentration"
   colnames(rawcounts)[colnames(rawcounts) == "plate_barcode"] = "plate_name"
   colnames(rawcounts)[colnames(rawcounts) == "strain_gene"] = "strain"
-  print("Ran function.")
+  print("Ran function successfully.")
   return(rawcounts)
 }
 
