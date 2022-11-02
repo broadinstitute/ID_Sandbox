@@ -22,12 +22,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     make \
     libssl-dev \
     libcurl4-openssl-dev \
-    liblz4-dev \
-    liblzma-dev \
     libncurses5-dev \
-    libxml2-dev \
-    libbz2-dev \
-    libpng-dev \
     r-bioc-biomart
 
 #Install R packages
@@ -37,7 +32,7 @@ RUN R --no-echo --no-restore --no-save -e "install.packages('dplyr')"
 
 #RUN /usr/local/lib/R
 
-WORKDIR /cromwell_root/
+#WORKDIR /cromwell_root/
 
 #Copying R scripts -- use /usr/local/bin if calling R script using which in workflow task
 RUN mkdir -p /home/R/
