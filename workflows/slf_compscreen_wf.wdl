@@ -24,7 +24,7 @@ workflow slf_compscreen_wf
         String intcon_name 
         Int lowcountfilter
         Int lowcountfilter_untreated
-        Int? mem_gb = 64
+        Int? mem_gb = 32
         Int? disk_gb = 100
         String? docker
     }

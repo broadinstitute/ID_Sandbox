@@ -23,14 +23,14 @@ task SLF_comp_screen
         Int lowcountfilter
         Int lowcountfilter_untreated
         String docker_image = "ojasbard/concensus_images:slf_v3"
-        Int mem_gb = 64
+        Int mem_gb = 32
         Int disk_gb = 100
     }
 
     command <<<
         #cd /home/R/${prefix}.rds
         echo "Starting R script"
-        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated}
+        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated} -mem "32 GB"
         #mv ~{"${prefix}.rds"} .
         echo "Checking if file ${prefix}.rds is generated"
         #ls /usr/local/lib/R
@@ -42,7 +42,7 @@ task SLF_comp_screen
         docker : docker_image
         memory : '${mem_gb} GB'
         disks : 'local-disk ${disk_gb} LOCAL'
-        maxRetries : 5
+        maxRetries : 0
     }
     
     output
