@@ -23,7 +23,7 @@ main <- function() {
 
   #Clean count data from Concensus2
   countdata = cleanfromConcensus2(rawcountpath = countdatapath1, count_exact = count_exact1)
-  saveRDS(countdata, savefilepath, row.names = FALSE)
+  savefilepath <- saveRDS(countdata, savefilepath)
   #Calculate SLF and ZZ-scores
   #savefilepath_rds = paste0(gsub("\\..*","",savefilepath),".rds")
   #compScreenPipeline(countdata, untreatedname = untreated_name, intconname = intcon_name, comp_conc_separator = ":", lowwellcount = lowcountfilter, low_untreated_count = lowcountfilter_untreated, medianLFC = FALSE, newSchema = F, savefilename = savefilepath)
