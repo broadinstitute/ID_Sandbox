@@ -30,7 +30,9 @@ task SLF_comp_screen
     command <<<
         #cd /home/R/${prefix}.rds
         echo "Starting R script"
-        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated} -mem "32 GB"
+        MEM_SIZE = 32
+        MEM_UNIT = "GB" 
+        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated} -mem "${MEM_SIZE} MEM_UNIT"
         #mv ~{"${prefix}.rds"} .
         echo "Checking if file ${prefix}.rds is generated"
         #ls /usr/local/lib/R
@@ -40,8 +42,8 @@ task SLF_comp_screen
     {
         cpu : 4
         docker : docker_image
-        memory : '${mem_gb} GB'
-        disks : 'local-disk ${disk_gb} LOCAL'
+        memory : "${mem_gb} GB"
+        disks : "local-disk ${disk_gb} LOCAL"
         maxRetries : 0
     }
     
