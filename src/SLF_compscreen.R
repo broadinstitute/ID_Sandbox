@@ -9,12 +9,12 @@ suppressMessages(library(tidyr))
 suppressMessages(library(dplyr))
 suppressMessages(library(stringr))
 #Path in the docker image
-suppressMessages(source('/Users/bardiya/Documents/ID_Sandbox/src/Functions_CompoundScreenPipelineSLF_210927.R'))
+suppressMessages(source('/home/R/Functions_CompoundScreenPipelineSLF_210927.R'))
 
 main <- function() {
   #args <- commandArgs(trailingOnly = TRUE)
   #print(args)
-  countdatapath1 <- '/Users/bardiya/Downloads/mabs_kabx_lysis_normalized_count_summary.csv'
+  countdatapath1 <- '/usr/data/mabs_kabx_lysis_normalized_count_summary.csv'
   savefilepath <- "mabs_1.rds"
   count_exact1 <- TRUE
   #untreated_name <- args[4]
