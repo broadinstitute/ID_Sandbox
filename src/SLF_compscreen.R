@@ -9,7 +9,7 @@ suppressMessages(library(tidyr))
 suppressMessages(library(dplyr))
 suppressMessages(library(stringr))
 #Path in the docker image
-suppressMessages(source("src/Functions_CompoundScreenPipelineSLF_210927.R"))
+suppressMessages(source("/home/R/Functions_CompoundScreenPipelineSLF_210927.R"))
 
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
