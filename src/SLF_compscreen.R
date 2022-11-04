@@ -15,18 +15,13 @@ args <- commandArgs(trailingOnly = TRUE)
 countdatapath1 <- args[1]
 savefilepath <- args[2]
 count_exact1 <- args[3]
+untreated_name <- args[4]
+intcon_name = args[5]
+lowcountfilter = as.integer(args[6])
+lowcountfilter_untreated = as.integer(args[7])
 
 main <- function() {
-  #args <- commandArgs(trailingOnly = TRUE)
-  #print(args)
-  #countdatapath1 <- "/Users/bardiya/Downloads/mabs_kabx_lysis_normalized_count_summary.csv"
-  #savefilepath <- "mabs_output"
-  #count_exact1 <- TRUE
-  #untreated_name <- args[4]
-  #intcon_name = args[5]
-  #lowcountfilter = as.integer(args[6])
-  #lowcountfilter_untreated = as.integer(args[7])
-
+  
   #Clean count data from Concensus2
   countdata = cleanfromConcensus2(rawcountpath = countdatapath1, count_exact = count_exact1)
   saveRDS(countdata, savefilepath)

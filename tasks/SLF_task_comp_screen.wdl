@@ -18,10 +18,10 @@ task SLF_comp_screen
 
         #Other Variables
         Boolean count_exact1
-        #String untreated_name
-        #String intcon_name 
-        #Int lowcountfilter
-        #Int lowcountfilter_untreated
+        String untreated_name
+        String intcon_name 
+        Int lowcountfilter
+        Int lowcountfilter_untreated
         String docker_image = "ojasbard/concensus_images:slf_v1"
         Int mem_gb = 32
         Int disk_gb = 100
@@ -30,12 +30,11 @@ task SLF_comp_screen
     command <<<
         #cd /home/R/${prefix}.rds
         echo "Starting R script"
-        #MEM_SIZE = 32
-        #MEM_UNIT = "GB" 
-        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} #~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated} -mem "${MEM_SIZE} MEM_UNIT"
+        MEM_SIZE = 32
+        MEM_UNIT = "GB" 
+        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated} -mem "${MEM_SIZE} MEM_UNIT"
         #mv ~{"${prefix}.rds"} .
         echo "Checking if file ${prefix}.rds is generated"
-        #ls /usr/local/lib/R
     >>>
     
     runtime
@@ -68,15 +67,15 @@ task SLF_comp_screen
             description: 'Compute exact matches if T',
             help: 'Boolean to determine whether to compute exact matches for counts'
                         }     
-        #untreated_name:  {
-            #description: 'Name of negative control compound',
-            #example: 'DMSO'
-                        #}
-        #intcon_name: {
-            #description: 'Name of the internal spike-in controls',
-            #help: 'Common word shared by all internal spike-in controls excluding hypomorphs',
-            #example: 'PCR'
-                        #}            
+        untreated_name:  {
+            description: 'Name of negative control compound',
+            example: 'DMSO'
+                        }
+        intcon_name: {
+            description: 'Name of the internal spike-in controls',
+            help: 'Common word shared by all internal spike-in controls excluding hypomorphs',
+            example: 'PCR'
+                        }            
     }
 }
 
