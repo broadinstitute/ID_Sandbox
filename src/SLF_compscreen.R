@@ -20,17 +20,14 @@ intcon_name = args[5]
 lowcountfilter = as.integer(args[6])
 lowcountfilter_untreated = as.integer(args[7])
 
-main <- function() {
+
   
-  #Clean count data from Concensus2
-  countdata = cleanfromConcensus2(rawcountpath = countdatapath1, count_exact = count_exact1)
-  saveRDS(countdata, savefilepath)
-  return(countdata)
-  #rds_output <- readRDS(savefilepath)
-  #return (rds_output)
-  #return(savefilepath)
-  #Calculate SLF and ZZ-scores
-  #savefilepath_rds = paste0(gsub("\\..*","",savefilepath),".rds")
-  compScreenPipeline(countdata, untreatedname = untreated_name, intconname = intcon_name, comp_conc_separator = ":", lowwellcount = lowcountfilter, low_untreated_count = lowcountfilter_untreated, medianLFC = FALSE, newSchema = F, savefilename = savefilepath)
-} 
-args[2] <- main()
+#Clean count data from Concensus2
+countdata = cleanfromConcensus2(rawcountpath = countdatapath1, count_exact = count_exact1)
+saveRDS(countdata, savefilepath)
+#rds_output <- readRDS(savefilepath)
+#return (rds_output)
+#return(savefilepath)
+#Calculate SLF and ZZ-scores
+#savefilepath_rds = paste0(gsub("\\..*","",savefilepath),".rds")
+#compScreenPipeline(countdata, untreatedname = untreated_name, intconname = intcon_name, comp_conc_separator = ":", lowwellcount = lowcountfilter, low_untreated_count = lowcountfilter_untreated, medianLFC = FALSE, newSchema = F, savefilename = savefilepath)
