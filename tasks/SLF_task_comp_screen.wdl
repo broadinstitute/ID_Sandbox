@@ -26,14 +26,16 @@ task SLF_comp_screen
         Int mem_gb = 32
         Int disk_gb = 100
     }
-
+    
     command <<<
         #cd /home/R/${prefix}.rds
+        ls
         echo "Starting R script"
         #MEM_SIZE = 32
         #MEM_UNIT = "GB" 
+        #mv ~{countdatapath} . 
         set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{savefilepath1} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated}
-        mv ~{savefilepath1} .
+        #mv ~{savefilepath1} .
         echo "Checking if file ${prefix}.rds is generated"
         ls
     >>>
@@ -44,7 +46,7 @@ task SLF_comp_screen
         docker : docker_image
         memory : "${mem_gb} GB"
         disks : "local-disk ${disk_gb} LOCAL"
-        maxRetries : 0
+        maxRetries : 2
     }
     
     output
