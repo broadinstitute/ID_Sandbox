@@ -30,9 +30,9 @@ task SLF_comp_screen
     command <<<
         #cd /home/R/${prefix}.rds
         echo "Starting R script"
-        MEM_SIZE = 32
-        MEM_UNIT = "GB" 
-        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated} -mem "${MEM_SIZE} MEM_UNIT"
+        #MEM_SIZE = 32
+        #MEM_UNIT = "GB" 
+        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated}
         #mv ~{"${prefix}.rds"} .
         echo "Checking if file ${prefix}.rds is generated"
     >>>
