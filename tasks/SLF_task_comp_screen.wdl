@@ -50,7 +50,7 @@ task SLF_comp_screen
     {
         #File rawcounts_changed_columns = 
         #File print_output = stdout()
-        File rawcounts_subset = ~{"${prefix}.rds"}
+        File rawcounts_subset = glob('*.rds')[0]
     }
 
     parameter_meta
