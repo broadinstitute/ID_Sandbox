@@ -20,10 +20,10 @@ workflow slf_compscreen_wf
 
         #Other Variables
         Boolean count_exact1
-        String untreated_name
-        String intcon_name 
-        Int lowcountfilter
-        Int lowcountfilter_untreated
+        #String untreated_name
+        #String intcon_name 
+        #Int lowcountfilter
+        #Int lowcountfilter_untreated
         Int? mem_gb = 32
         Int? disk_gb = 100
         String? docker
@@ -33,10 +33,10 @@ workflow slf_compscreen_wf
             countdatapath = countdatapath,
             prefix = prefix,
             count_exact1 = count_exact1,
-            untreated_name = untreated_name,
-            intcon_name = intcon_name,
-            lowcountfilter = lowcountfilter,
-            lowcountfilter_untreated = lowcountfilter_untreated,
+            #untreated_name = untreated_name,
+            #intcon_name = intcon_name,
+            #lowcountfilter = lowcountfilter,
+            #lowcountfilter_untreated = lowcountfilter_untreated,
             mem_gb = mem_gb,
             disk_gb = disk_gb,
             docker_image = docker

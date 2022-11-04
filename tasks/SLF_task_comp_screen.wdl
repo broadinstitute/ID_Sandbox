@@ -18,10 +18,10 @@ task SLF_comp_screen
 
         #Other Variables
         Boolean count_exact1
-        String untreated_name
-        String intcon_name 
-        Int lowcountfilter
-        Int lowcountfilter_untreated
+        #String untreated_name
+        #String intcon_name 
+        #Int lowcountfilter
+        #Int lowcountfilter_untreated
         String docker_image = "ojasbard/concensus_images:slf_v1"
         Int mem_gb = 32
         Int disk_gb = 100
@@ -30,9 +30,9 @@ task SLF_comp_screen
     command <<<
         #cd /home/R/${prefix}.rds
         echo "Starting R script"
-        MEM_SIZE = 32
-        MEM_UNIT = "GB" 
-        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated} -mem "${MEM_SIZE} MEM_UNIT"
+        #MEM_SIZE = 32
+        #MEM_UNIT = "GB" 
+        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} #~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated} -mem "${MEM_SIZE} MEM_UNIT"
         #mv ~{"${prefix}.rds"} .
         echo "Checking if file ${prefix}.rds is generated"
         #ls /usr/local/lib/R
@@ -50,7 +50,7 @@ task SLF_comp_screen
     output
     {
         #File rawcounts_changed_columns = 
-        File print_output = stdout()
+        #File print_output = stdout()
         File rawcounts_subset = "${prefix}.rds"
     }
 
