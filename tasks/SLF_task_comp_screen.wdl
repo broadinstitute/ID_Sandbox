@@ -32,9 +32,10 @@ task SLF_comp_screen
         echo "Starting R script"
         #MEM_SIZE = 32
         #MEM_UNIT = "GB" 
-        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{"${prefix}.rds"} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated}
-        #mv ~{"${prefix}.rds"} .
+        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} "${prefix}.rds" ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated}
+        #mv "${prefix}.rds" .
         echo "Checking if file ${prefix}.rds is generated"
+        ls
     >>>
     
     runtime
@@ -50,7 +51,7 @@ task SLF_comp_screen
     {
         #File rawcounts_changed_columns = 
         #File print_output = stdout()
-        File rawcounts_subset = glob('*.rds')[0]
+        File rawcounts_subset = "${prefix}.rds" 
     }
 
     parameter_meta
