@@ -15,8 +15,8 @@ workflow slf_compscreen_wf
     {
         #Files & file paths
         File countdatapath #Input file
-        #String? savefilepath1 #Path to output for saving the .rds file
         String prefix
+        String? savefilepath1 = "${prefix}.rds" #Path to output for saving the .rds file
 
         #Other Variables
         Boolean count_exact1
@@ -32,6 +32,7 @@ workflow slf_compscreen_wf
         input:
             countdatapath = countdatapath,
             prefix = prefix,
+            savefilepath1 = savefilepath1,
             count_exact1 = count_exact1,
             untreated_name = untreated_name,
             intcon_name = intcon_name,

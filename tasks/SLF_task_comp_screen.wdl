@@ -14,7 +14,7 @@ task SLF_comp_screen
         #Files & file paths
         File countdatapath #Input file
         String prefix 
-        #String savefilepath1 = "${prefix}.rds" #File name for saving the output
+        String savefilepath1 = "${prefix}.rds" #File name for saving the output
 
         #Other Variables
         Boolean count_exact1
@@ -32,8 +32,8 @@ task SLF_comp_screen
         echo "Starting R script"
         #MEM_SIZE = 32
         #MEM_UNIT = "GB" 
-        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} "${prefix}.rds" ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated}
-        #mv "${prefix}.rds" .
+        set -e Rscript $(which SLF_compscreen.R) ~{countdatapath} ~{savefilepath1} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated}
+        mv ~{savefilepath1} .
         echo "Checking if file ${prefix}.rds is generated"
         ls
     >>>
@@ -51,7 +51,7 @@ task SLF_comp_screen
     {
         #File rawcounts_changed_columns = 
         #File print_output = stdout()
-        File rawcounts_subset = "${prefix}.rds" 
+        File rawcounts_subset = savefilepath1
     }
 
     parameter_meta
