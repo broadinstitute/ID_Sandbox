@@ -3,7 +3,7 @@ version 1.0
 #Importing the necessary tasks
 import "../tasks/SLF_task_subset.wdl" as SLF_sub
 
-workflow SLF_wf 
+workflow slf_subset_wf 
 {
     meta 
     {
@@ -29,6 +29,8 @@ workflow SLF_wf
             savefilepath2 = savefilepath2,
             compscreen_rds = compscreen_rds_output,
             keep_colnames = keep_colnames,
+            mem_gb = mem_gb,
+            disk_gb = disk_gb,
             docker_image = docker
     }
     output
