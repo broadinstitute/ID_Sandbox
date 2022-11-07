@@ -30,7 +30,7 @@ task SLF_comp_screen
     command {
         echo "Starting R script"
         echo "${savefilepath1} is going to be the file output name" 
-        set -e Rscript $(which test.R) ${countdatapath} ${savefilepath1} ${count_exact1} ${untreated_name} ${intcon_name} ${lowcountfilter} ${lowcountfilter_untreated}
+        set -e Rscript /usr/local/bin/test.R ${countdatapath} ${savefilepath1} ${count_exact1} ${untreated_name} ${intcon_name} ${lowcountfilter} ${lowcountfilter_untreated}
         ls
     }
     
