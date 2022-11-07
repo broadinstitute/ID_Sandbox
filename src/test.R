@@ -13,6 +13,8 @@ untreated_name <- args[9]
 intcon_name = args[10]
 lowcountfilter = as.integer(args[11])
 lowcountfilter_untreated = as.integer(args[12])
+cat(savefilepath, count_exact1, untreated_name, intcon_name, lowcountfilter, lowcountfilter_untreated) # nolint
+print("read arguments correctly")
 
 countdata = cleanfromConcensus2(rawcountpath = countdatapath1, count_exact = count_exact1)
 

@@ -15,33 +15,35 @@ cleanfromConcensus2 <- function(rawcountpath, count_exact = T){
   #outputs data frame to be read by compScreenPipeline for calculation of ZZ and SLF
   rawcounts = read.csv(rawcountpath, stringsAsFactors = F)
   print(dim(rawcounts))
-  if(is.na(count_exact) | count_exact %in% c("f", "F", "false", "FALSE")){
-    count_exact = F
+  if(is.na(count_exact) || count_exact %in% c("f", "F", "false", "FALSE")){
+    count_exact = F # nolint
   }else if(count_exact %in% c("t", "true", "TRUE", "T")){
-    count_exact = T
+    count_exact = T # nolint
   }
-  
+   # nolint
   if(count_exact){
-    colnames(rawcounts)[colnames(rawcounts) == "count_exact"] = "count"
+    colnames(rawcounts)[colnames(rawcounts) == "count_exact"] = "count" # nolint
   }else{
-    colnames(rawcounts)[colnames(rawcounts) == "count_all"] = "count"
+    colnames(rawcounts)[colnames(rawcounts) == "count_all"] = "count" # nolint
   }
-  # rawcounts = select(rawcounts, Broad_Sample, mmoles_per_liter, plate_barcode, well_pos, strain_gene, count)
-  rawcounts = select(rawcounts, Broad_Sample, mmoles_per_liter, plate_barcode, well_pos, strain_gene, count, pool) 
-  
+  print("read count_exact correctly")
+  # rawcounts = select(rawcounts, Broad_Sample, mmoles_per_liter, plate_barcode, well_pos, strain_gene, count) # nolint
+  rawcounts = select(rawcounts, Broad_Sample, mmoles_per_liter, plate_barcode, well_pos, strain_gene, count, pool)  # nolint
+   # nolint
+  print("selected column names correctly")
   #Concatenate pool to plate_name to make sure it's unique
-  rawcounts = mutate(rawcounts, plate_barcode = paste(plate_barcode, pool, sep = "_"))
-  rawcounts = select(rawcounts, -pool)
-  
-  rawcounts = dplyr::filter(rawcounts, !(strain_gene %in% c("", "#N/A", "NA"))) #remove cases with no strain_gene name (empty string)
-  rawcounts = dplyr::filter(rawcounts, !(Broad_Sample == "")) #remove cases with no compound (empty string)
-  rawcounts$row = gsub("\\d+", '', rawcounts$well_pos)
-  rawcounts$column = gsub("\\D+", '', rawcounts$well_pos)
-  rawcounts = select(rawcounts, -well_pos)
-  colnames(rawcounts)[colnames(rawcounts) == "Broad_Sample"] = "compound"
-  colnames(rawcounts)[colnames(rawcounts) == "mmoles_per_liter"] = "concentration"
-  colnames(rawcounts)[colnames(rawcounts) == "plate_barcode"] = "plate_name"
-  colnames(rawcounts)[colnames(rawcounts) == "strain_gene"] = "strain"
+  rawcounts = mutate(rawcounts, plate_barcode = paste(plate_barcode, pool, sep = "_")) # nolint
+  rawcounts = select(rawcounts, -pool) # nolint
+  print("read concatenated pool correctly")
+  rawcounts = dplyr::filter(rawcounts, !(strain_gene %in% c("", "#N/A", "NA"))) #remove cases with no strain_gene name (empty string) # nolint
+  rawcounts = dplyr::filter(rawcounts, !(Broad_Sample == "")) #remove cases with no compound (empty string) # nolint
+  rawcounts$row = gsub("\\d+", '', rawcounts$well_pos) # nolint
+  rawcounts$column = gsub("\\D+", '', rawcounts$well_pos) # nolint
+  rawcounts = select(rawcounts, -well_pos) # nolint
+  colnames(rawcounts)[colnames(rawcounts) == "Broad_Sample"] = "compound" # nolint
+  colnames(rawcounts)[colnames(rawcounts) == "mmoles_per_liter"] = "concentration" # nolint
+  colnames(rawcounts)[colnames(rawcounts) == "plate_barcode"] = "plate_name" # nolint
+  colnames(rawcounts)[colnames(rawcounts) == "strain_gene"] = "strain" # nolint
   print("Ran function successfully.")
   return(rawcounts)
 }
