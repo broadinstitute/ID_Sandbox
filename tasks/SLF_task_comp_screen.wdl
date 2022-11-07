@@ -40,7 +40,7 @@ task SLF_comp_screen
         docker : docker_image
         memory : "${mem_gb} GB"
         disks : "local-disk ${disk_gb} LOCAL"
-        maxRetries : 2
+        maxRetries : 1
     }
     
     output
