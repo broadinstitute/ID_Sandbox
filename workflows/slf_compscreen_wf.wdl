@@ -19,7 +19,7 @@ workflow slf_compscreen_wf
         String? savefilepath1 = "mabs_output.rds" #Path to output for saving the .rds file
 
         #Other Variables
-        Boolean count_exact1=true
+        String count_exact1="T"
         String untreated_name="DMSO"
         String intcon_name="PCR"
         Int lowcountfilter=10

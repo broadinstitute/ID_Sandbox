@@ -17,7 +17,7 @@ task SLF_comp_screen
         String savefilepath1 = "mabs_output.rds" #File name for saving the output
 
         #Other Variables
-        Boolean count_exact1=true
+        String count_exact1="T"
         String untreated_name="DMSO"
         String intcon_name="PCR"
         Int lowcountfilter = 10
