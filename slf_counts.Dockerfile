@@ -40,6 +40,7 @@ COPY src/Functions_CompoundScreenPipelineSLF_210927.R /home/R/
 
 COPY src/SLF_compscreen.R /usr/local/bin/
 COPY src/SLF_subset.R /usr/local/bin/
+COPY src/test.R /usr/local/bin/
 
 
 
