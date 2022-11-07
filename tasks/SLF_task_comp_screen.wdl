@@ -17,26 +17,27 @@ task SLF_comp_screen
         String savefilepath1 = "mabs_output.rds" #File name for saving the output
 
         #Other Variables
-        Boolean count_exact1
-        String untreated_name
-        String intcon_name 
-        Int lowcountfilter
-        Int lowcountfilter_untreated
+        Boolean count_exact1=true
+        String untreated_name="DMSO"
+        String intcon_name="PCR"
+        Int lowcountfilter = 10
+        Int lowcountfilter_untreated = 100
         String docker_image = "ojasbard/concensus_images:slf_v1"
         Int mem_gb = 32
         Int disk_gb = 100
     }
 
-    command <<<
+    command {
         echo "Starting R script"
+        echo "${savefilepath1} is going to be the file output name"
         #MEM_SIZE = 32
         #MEM_UNIT = "GB" 
         #mv ~{countdatapath} . 
-        set -e Rscript $(which test.R) ~{countdatapath} ~{savefilepath1} ~{count_exact1} ~{untreated_name} ~{intcon_name} ~{lowcountfilter} ~{lowcountfilter_untreated}
+        set -e Rscript $(which test.R) ${countdatapath} ${savefilepath1} ${count_exact1} ${untreated_name} ${intcon_name} ${lowcountfilter} ${lowcountfilter_untreated}
         #mv ~{savefilepath1} .
         #echo "Checking if file ${prefix}.rds is generated"
         ls
-    >>>
+    }
     
     runtime
     {
@@ -51,7 +52,7 @@ task SLF_comp_screen
     {
         #File rawcounts_changed_columns = 
         File print_output = stdout()
-        #File rawcounts_subset = savefilepath1
+        File rawcounts_subset = savefilepath1
     }
 
     parameter_meta
@@ -60,10 +61,10 @@ task SLF_comp_screen
             description: 'Path to input',
             help: 'Summary table (.csv) that was produced by Concensus2 pipeline'
                         }
-        #savefilepath1:    {
-            #description: 'Output path for both .rds and .csv files',
-            #help : 'Path to output where you want to save your final SLF and ZZ-score file.'
-                        #}
+        savefilepath1:    {
+            description: 'Output path for both .rds and .csv files',
+            help : 'Path to output where you want to save your final SLF and ZZ-score file.'
+                        }
         count_exact1:    {
             description: 'Compute exact matches if T',
             help: 'Boolean to determine whether to compute exact matches for counts'

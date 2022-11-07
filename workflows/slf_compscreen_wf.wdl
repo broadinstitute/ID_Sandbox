@@ -19,14 +19,14 @@ workflow slf_compscreen_wf
         String? savefilepath1 = "mabs_output.rds" #Path to output for saving the .rds file
 
         #Other Variables
-        Boolean count_exact1
-        String untreated_name
-        String intcon_name 
-        Int lowcountfilter
-        Int lowcountfilter_untreated
+        Boolean count_exact1=true
+        String untreated_name="DMSO"
+        String intcon_name="PCR"
+        Int lowcountfilter=10
+        Int lowcountfilter_untreated=100
         Int? mem_gb = 32
         Int? disk_gb = 100
-        String? docker
+        String? docker="ojasbard/concensus_images:slf_v1"
     }
     call SLF_comp_sc.SLF_comp_screen as slf_cs{
         input:
@@ -45,6 +45,6 @@ workflow slf_compscreen_wf
     output
     {
         File printed_stuff = slf_cs.print_output
-        #File slf_counts_rds = slf_cs.rawcounts_subset #output which is .rds file
+        File slf_counts_rds = slf_cs.rawcounts_subset #output which is .rds file
     }
 }
