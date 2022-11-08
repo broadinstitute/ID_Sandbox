@@ -24,7 +24,7 @@ task SLF_subset
     }
 
     command {
-        Rscript /usr/local/bin/SLF_subset.R ${compscreen_rds} ${keep_colnames} ${savefilepath2}
+        Rscript /usr/local/bin/SLF_subset.R ${compscreen_rds} "${keep_colnames}" ${savefilepath2}
     }
     
     runtime

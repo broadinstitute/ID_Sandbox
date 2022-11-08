@@ -695,10 +695,12 @@ subsetSLF <- function(screendata_path, keep_columns = c("strain", "compound", "c
   #Saves .csv file in savefilename, otherwise uses the screendatapath name
   
   screendata = readRDS(screendata_path)
+  print("Read output from compscreen successfully")
   convertSchema(screendata, to = "old")
   screendata_sub = select(screendata, one_of(keep_columns))
   if(!is.na(savefilename)){
     write.csv(screendata_sub, savefilename, row.names = F)
+    print("Wrote csv file successfully")
   }else{
     savefilename = paste0(gsub(".rds", "", screendata_path), "_subset.csv")
     write.csv(screendata_sub, savefilename, row.names = F)
