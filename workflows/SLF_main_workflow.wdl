@@ -56,6 +56,7 @@ workflow SLF_wf
     output
     {
         File slf_counts_rds = slf_cs.rawcounts_subset #output which is .rds file
+        File print_output_compscreen = slf_cs.print_output #std output from compscreen pipeline
         File slf_counts_subset_csv = slf_sb.rawcounts_subset_csv #output which is .csv file
     }
 }
