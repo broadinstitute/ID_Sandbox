@@ -11,23 +11,27 @@ suppressMessages(library(stringr))
 #Path in the docker image
 suppressMessages(source("/home/R/Functions_CompoundScreenPipelineSLF_210927.R"))
 
-args <- commandArgs(trailingOnly = TRUE)
-countdatapath1 <- args[1]
-savefilepath <- args[2]
-count_exact1 <- args[3]
-untreated_name <- args[4]
-intcon_name = args[5]
-lowcountfilter = as.integer(args[6])
-lowcountfilter_untreated = as.integer(args[7])
+args <- commandArgs()
+print(args)
+countdatapath1 <- args[6]
+savefilepath <- args[7]
+count_exact1 <- args[8]
+untreated_name <- args[9]
+intcon_name = args[10]
+lowcountfilter = as.integer(args[11])
+lowcountfilter_untreated = as.integer(args[12])
+cat(savefilepath, count_exact1, untreated_name, intcon_name, lowcountfilter, lowcountfilter_untreated) # nolint
+print("read arguments correctly")
 
+countdata = cleanfromConcensus2(rawcountpath = countdatapath1, count_exact = count_exact1)
 
+rds_output = compScreenPipeline(countdata, untreatedname = untreated_name, intconname = intcon_name, comp_conc_separator = ":", lowwellcount = lowcountfilter, low_untreated_count = lowcountfilter_untreated, medianLFC = FALSE, newSchema = F, savefilename = savefilepath)
+#saveRDS(rds_output, savefilepath)
+
+#Clean count data from Concensus2
+##countdata = cleanfromConcensus2(rawcountpath = countdatapath1, count_exact = count_exact1)
+#saveRDS(countdata, savefilepath)
   
 #Clean count data from Concensus2
-countdata = cleanfromConcensus2(rawcountpath = countdatapath1, count_exact = count_exact1)
-saveRDS(countdata, savefilepath)
-#rds_output <- readRDS(savefilepath)
-#return (rds_output)
-#return(savefilepath)
-#Calculate SLF and ZZ-scores
-#savefilepath_rds = paste0(gsub("\\..*","",savefilepath),".rds")
-#compScreenPipeline(countdata, untreatedname = untreated_name, intconname = intcon_name, comp_conc_separator = ":", lowwellcount = lowcountfilter, low_untreated_count = lowcountfilter_untreated, medianLFC = FALSE, newSchema = F, savefilename = savefilepath)
+##countdata = cleanfromConcensus2(rawcountpath = countdatapath1, count_exact = count_exact1)
+#saveRDS(countdata, savefilepath)

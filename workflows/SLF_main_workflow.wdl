@@ -16,23 +16,23 @@ workflow SLF_wf
     {
         #Files & file paths
         File countdatapath #Input file
-        #String? savefilepath1 #Path to output for saving the .rds file 
-        #String? savefilepath2 #Path to output for saving the .csv file 
-        String prefix
+        String? savefilepath1 = "mabs_output.rds" 
+        String? savefilepath2 = "mabs_output.csv"
+        #String prefix
 
         #Other Variables
-        Boolean count_exact1
-        String untreated_name
-        String intcon_name 
-        Int lowcountfilter
-        Int lowcountfilter_untreated
-        Array[String]? keep_colnames
-        String? docker
+        String count_exact1="T"
+        String untreated_name="DMSO"
+        String intcon_name="PCR"
+        Int lowcountfilter = 10
+        Int lowcountfilter_untreated = 100
+        Array[String]? keep_colnames=["strain","compound","concentration","plate_name","row","column,count","rep,wellcount","wellcountfrac","std_lf,zscore_stdlf","zscore_stdlf2","correlation","log2FC"]
+        String? docker="ojasbard/concensus_images:slf_v1"
     }
     call SLF_comp_sc.SLF_comp_screen as slf_cs{
         input:
             countdatapath = countdatapath,
-            prefix = prefix,
+            savefilepath1 = savefilepath1,
             count_exact1 = count_exact1,
             untreated_name = untreated_name,
             intcon_name = intcon_name,
@@ -42,7 +42,7 @@ workflow SLF_wf
     }
     call SLF_sub.SLF_subset as slf_sb{
         input:
-            prefix = prefix,
+            savefilepath2 = savefilepath2,
             compscreen_rds = slf_cs.rawcounts_subset, #.rds file from comp screen pipeline
             keep_colnames = keep_colnames,
             docker_image = docker
