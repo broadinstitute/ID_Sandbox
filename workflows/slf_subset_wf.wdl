@@ -19,7 +19,7 @@ workflow slf_subset_wf
         #String prefix
 
         #Other Variables
-        Array[String]? keep_colnames=["strain","compound","concentration","plate_name","row","column,count","rep,wellcount","wellcountfrac","std_lf,zscore_stdlf","zscore_stdlf2","correlation","log2FC"]
+        String? keep_colnames="strain,compound,concentration,plate_name,row,column,count,rep,wellcount,wellcountfrac,std_lf,zscore_stdlf,zscore_stdlf2,correlation,log2FC"
         Int? mem_gb = 32
         Int? disk_gb = 100
         String? docker="ojasbard/concensus_images:slf_v1"

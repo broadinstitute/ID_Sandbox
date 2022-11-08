@@ -26,7 +26,9 @@ workflow SLF_wf
         String intcon_name="PCR"
         Int lowcountfilter = 10
         Int lowcountfilter_untreated = 100
-        Array[String]? keep_colnames=["strain","compound","concentration","plate_name","row","column,count","rep,wellcount","wellcountfrac","std_lf,zscore_stdlf","zscore_stdlf2","correlation","log2FC"]
+        String? keep_colnames="strain,compound,concentration,plate_name,row,column,count,rep,wellcount,wellcountfrac,std_lf,zscore_stdlf,zscore_stdlf2,correlation,log2FC"
+        Int? mem_gb = 32
+        Int? disk_gb = 100
         String? docker="ojasbard/concensus_images:slf_v1"
     }
     call SLF_comp_sc.SLF_comp_screen as slf_cs{
@@ -38,6 +40,8 @@ workflow SLF_wf
             intcon_name = intcon_name,
             lowcountfilter = lowcountfilter,
             lowcountfilter_untreated = lowcountfilter_untreated,
+            mem_gb = mem_gb,
+            disk_gb = disk_gb,
             docker_image = docker
     }
     call SLF_sub.SLF_subset as slf_sb{
@@ -45,6 +49,8 @@ workflow SLF_wf
             savefilepath2 = savefilepath2,
             compscreen_rds = slf_cs.rawcounts_subset, #.rds file from comp screen pipeline
             keep_colnames = keep_colnames,
+            mem_gb = mem_gb,
+            disk_gb = disk_gb,
             docker_image = docker
     }
     output
