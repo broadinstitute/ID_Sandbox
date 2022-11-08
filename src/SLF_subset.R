@@ -10,15 +10,14 @@ suppressMessages(library(dplyr))
 #Path in the docker image
 suppressMessages(source("/home/R/Functions_CompoundScreenPipelineSLF_210927.R")) 
 
-main <- function() {
-  args <- commandArgs(trailingOnly = TRUE)
-  file_rds <- args[1]
-  keep_colnames = unlist(args[2])
-  savefilepath <- args[3]
+args <- commandArgs()
+print(args)
+file_rds <- args[6]
+keep_colnames = unlist(args[7])
+savefilepath <- args[8]
+print(keep_colnames)
+print("Checked if list was entered correctly")
 
   #Save CSV file with chosen columns
   #savefilepath_csv = paste0(gsub("\\..*","",savefilepath),".csv")
-  subsetSLF(screendata_path = file_rds, keep_columns = keep_colnames, savefilename = savefilepath)
-} 
-
-main()
+subsetSLF(screendata_path = file_rds, keep_columns = keep_colnames, savefilename = savefilepath)
