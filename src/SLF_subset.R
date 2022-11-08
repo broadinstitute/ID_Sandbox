@@ -13,7 +13,8 @@ suppressMessages(source("/home/R/Functions_CompoundScreenPipelineSLF_210927.R"))
 args <- commandArgs()
 print(args)
 file_rds <- args[6]
-keep_colnames = unlist(args[7])
+#keep_colnames = unlist(args[7])
+keep_colnames = unlist(strsplit(args[7], split = ',')) #use this when running in docker locally
 savefilepath <- args[8]
 print(keep_colnames)
 print("Checked if list was entered correctly")
